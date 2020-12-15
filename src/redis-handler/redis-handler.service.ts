@@ -1,12 +1,6 @@
-import {
-  Injectable,
-  UnauthorizedException,
-  UnprocessableEntityException,
-} from "@nestjs/common";
+import { Injectable, UnprocessableEntityException } from "@nestjs/common";
 import { Redis } from "ioredis";
 import { RedisService } from "nestjs-redis";
-import { getValueInterface } from "./interfaces/getValue.interface";
-import { userInfoInterface } from "./interfaces/userInfo.interface";
 
 @Injectable()
 export class RedisHandlerService {

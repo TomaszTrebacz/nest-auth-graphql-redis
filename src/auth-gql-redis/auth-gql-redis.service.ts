@@ -1,13 +1,13 @@
 import { Injectable, UnauthorizedException } from "@nestjs/common";
-import { JwtPayload } from "src/interfaces/jwt-payload.interface";
-import { RedisHandlerService } from "src/redis-handler/redis-handler.service";
+import { JwtPayload } from "../interfaces/jwt-payload.interface";
+import { RedisHandlerService } from "../redis-handler/redis-handler.service";
 
 @Injectable()
 export class AuthGqlRedisService {
-  constructor(private redis: RedisHandlerService) {}
+  constructor(private redisHandlerService: RedisHandlerService) {}
 
   async validateJWT(payload: JwtPayload): Promise<boolean> {
-    const userExists = await this.redis.userExists(payload.id);
+    const userExists = await this.redisHandlerService.userExists(payload.id);
 
     if (userExists === false) {
       throw new UnauthorizedException(

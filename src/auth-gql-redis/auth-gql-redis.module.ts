@@ -1,11 +1,12 @@
-import { Global, Module } from "@nestjs/common";
+import { Module } from "@nestjs/common";
 import { RedisHandlerService } from "../redis-handler/redis-handler.service";
-import { ConfigModule, ConfigService } from "@nestjs/config";
+import { ConfigService } from "@nestjs/config";
 import { RedisModule } from "nestjs-redis";
 import { RedisHandlerModule } from "../redis-handler/redis-handler.module";
 import { JwtModule } from "@nestjs/jwt";
 import { PassportModule } from "@nestjs/passport";
-import { AuthGqlRedisService } from "../auth-gql-redis/auth-gql-redis.service";
+import { AuthGqlRedisService } from "./auth-gql-redis.service";
+import { JwtStrategy } from "../strategies/jwt.strategy";
 
 @Module({
   imports: [
@@ -22,7 +23,7 @@ import { AuthGqlRedisService } from "../auth-gql-redis/auth-gql-redis.service";
     }),
     RedisHandlerModule,
   ],
-  providers: [RedisHandlerService, AuthGqlRedisService],
-  exports: [RedisHandlerService],
+  providers: [RedisHandlerService, AuthGqlRedisService, JwtStrategy],
+  exports: [RedisHandlerService, AuthGqlRedisService, JwtStrategy],
 })
 export class AuthGqlRedisModule {}

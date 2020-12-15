@@ -5,6 +5,7 @@
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "esModuleInterop": true,
     "target": "ES2018",
     "lib": ["es2018", "dom", "esnext"],
     "sourceMap": false,
