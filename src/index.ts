@@ -3,6 +3,7 @@ export * from "./auth-gql-redis/auth-gql-redis.module";
 export * from "./auth-gql-redis/auth-gql-redis.service";
 
 export * from "./decorators/roles.decorator";
+export * from "./decorators/user.decorator";
 
 export * from "./guards/gql-auth.guard";
 export * from "./guards/roles.guard";
