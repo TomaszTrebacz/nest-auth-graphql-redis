@@ -10,6 +10,7 @@ export class AuthGqlRedisService {
     private jwtService: JwtService
   ) {}
 
+  // check if user exists in database
   async validateJWT(payload: JwtPayload): Promise<boolean> {
     const userExists = await this.redisHandlerService.userExists(payload.id);
 
@@ -23,19 +24,25 @@ export class AuthGqlRedisService {
   }
 
   // secret & exp is setted in auth.module.ts in config env
-  createDefaultJWT(payload) {
-    return this.jwtService.sign(payload);
+  // default jwt is used as access token, so function only accepts id as param
+  async createDefaultJWT(id: string): Promise<string> {
+    const payload = { id: id };
+    return await this.jwtService.sign(payload);
   }
 
   // used for custom tokens, like refresh or confirm token
-  createJWT(payload, secret, expiresIn) {
-    return this.jwtService.sign(payload, {
+  async createJWT(
+    payload: any,
+    secret: string,
+    expiresIn: string
+  ): Promise<string> {
+    return await this.jwtService.sign(payload, {
       secret: secret,
       expiresIn: expiresIn,
     });
   }
 
-  verifyToken(token, secret) {
-    return this.jwtService.verify(token, secret);
+  async verifyToken(token, secret): Promise<JwtPayload> {
+    return await this.jwtService.verify(token, { secret: secret });
   }
 }

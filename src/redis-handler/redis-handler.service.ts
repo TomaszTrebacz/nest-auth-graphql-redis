@@ -16,7 +16,7 @@ export class RedisHandlerService {
 
   /*
     comprehensive function for saving new user in database
-    and create/update fields for purpopses
+    and create/update fields for purposes
     like reset password, refresh token etc.
   */
   async setUser(id: string, properties: Map<string, string>): Promise<boolean> {
