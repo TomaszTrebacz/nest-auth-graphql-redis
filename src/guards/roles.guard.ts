@@ -10,7 +10,10 @@ import { GqlExecutionContext } from "@nestjs/graphql";
 
 @Injectable()
 export class RolesGuard extends GqlAuthGuard {
-  constructor(private reflector: Reflector) {
+  constructor(
+    @Inject("RedisHandlerService") private readonly RedisHandlerService,
+    private reflector: Reflector
+  ) {
     super();
   }
 
@@ -21,12 +24,10 @@ export class RolesGuard extends GqlAuthGuard {
       const ctx = GqlExecutionContext.create(context);
       const request = ctx.getContext().req;
 
-      /*const actualRole = await this.RedisHandlerService.getValue(
+      const actualRole = await this.RedisHandlerService.getValue(
         request.user.id,
         "role"
       );
-*/
-      const actualRole = "user";
 
       if (!roles.includes(actualRole)) {
         throw new UnauthorizedException("Wrong role!");
