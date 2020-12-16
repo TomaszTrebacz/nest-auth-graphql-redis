@@ -21,8 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "repository": {
-    "type": "git",
-    "url": "https://github.com/TomaszTrebacz/nest-auth-graphql-redis"
+    "url": "git://github.com/TomaszTrebacz/nest-auth-graphql-redis.git"
   },
   "keywords": [
     "nest",

@@ -7,6 +7,8 @@ import { JwtModule } from "@nestjs/jwt";
 import { PassportModule } from "@nestjs/passport";
 import { AuthGqlRedisService } from "./auth-gql-redis.service";
 import { JwtStrategy } from "../strategies/jwt.strategy";
+import { TokenModule } from "src/token/token.module";
+import { TokenService } from "src/token/token.service";
 
 @Module({
   imports: [
@@ -22,8 +24,19 @@ import { JwtStrategy } from "../strategies/jwt.strategy";
       inject: [ConfigService],
     }),
     RedisHandlerModule,
+    TokenModule,
   ],
-  providers: [RedisHandlerService, AuthGqlRedisService, JwtStrategy],
-  exports: [RedisHandlerService, AuthGqlRedisService, JwtStrategy],
+  providers: [
+    RedisHandlerService,
+    TokenService,
+    AuthGqlRedisService,
+    JwtStrategy,
+  ],
+  exports: [
+    RedisHandlerService,
+    TokenService,
+    AuthGqlRedisService,
+    JwtStrategy,
+  ],
 })
 export class AuthGqlRedisModule {}
