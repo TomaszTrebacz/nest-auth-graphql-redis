@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Nest auth package designed specifically for microservices based apps",
   "author": "Tomasz Trebacz",
+  "license": "MIT",
   "main": "dist/index.js",
   "files": [
     "dist/**/*",
@@ -19,6 +20,17 @@
     "test:cov": "jest --coverage",
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TomaszTrebacz/nest-auth-graphql-redis"
+  },
+  "keywords": [
+    "nest",
+    "nestjs",
+    "auth",
+    "redis",
+    "graphql"
+  ],
   "peerDependencies": {
     "@nestjs/common": "^6.0.0"
   },
