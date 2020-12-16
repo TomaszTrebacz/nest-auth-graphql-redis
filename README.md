@@ -1,5 +1,5 @@
 <p align="center">
-  <a target="blank"><img src="https://imgbox.com/XidIGGEo#" alt="Package Logo" /></a>
+  <a target="blank"><img src="https://i.postimg.cc/NG61WrJS/logo.png" alt="Package Logo" /></a>
    <h1 align="center">Nest Auth GraphQL Redis</h1>
 </p>
 
