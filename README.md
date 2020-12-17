@@ -20,6 +20,12 @@ REDIS_DB=
 REDIS_PASSWORD=
 ```
 
+- Install package:
+
+```ts
+npm install @tomasztrebacz/nest-auth-graphql-redis
+```
+
 - Create following files in ./config directory:
 
 ```ts
@@ -59,7 +65,7 @@ import { Injectable } from "@nestjs/common";
 import {
   AuthGqlRedisService,
   RedisHandlerService,
-} from "nest-auth-graphql-redis";
+} from "@tomasztrebacz/nest-auth-graphql-redis";
 
 @Injectable()
 export class xyzService {
