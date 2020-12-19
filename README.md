@@ -9,6 +9,12 @@
 
 ## Getting started
 
+- Install package:
+
+```ts
+npm install @tomasztrebacz/nest-auth-graphql-redis
+```
+
 - Create .env file with necessary variables:
 
 ```
@@ -18,12 +24,6 @@ REDIS_HOST=
 REDIS_PORT=
 REDIS_DB=
 REDIS_PASSWORD=
-```
-
-- Install package:
-
-```ts
-npm install @tomasztrebacz/nest-auth-graphql-redis
 ```
 
 - Create following files in ./config directory:
@@ -76,6 +76,14 @@ export class xyzService {
 }
 ```
 
+- HTTP header
+
+```ts
+{
+  "Authorization": "Bearer <your_token>"
+}
+```
+
 ## Usage
 
 - ### Guards & Decorators
@@ -98,6 +106,28 @@ export class xyzService {
   @Query('users')
   @Roles(userRole.ADMIN, userRole.ROOT)
   @UseGuards(GqlAuthGuard, RolesGuard)
+  findAll() {
+    return this.usersService.findAll();
+  }
+  ```
+
+  - Confirmed  
+    `check if the user is confirmed`
+
+  ```ts
+  @Query('users')
+  @UseGuards(GqlAuthGuard, ConfirmedGuard)
+  findAll() {
+    return this.usersService.findAll();
+  }
+  ```
+
+  - Auth Decorator - All in one  
+    `this decorator combine all guards`
+
+  ```ts
+  @Query('users')
+  @Auth() // if you want check roles, use @Auth('role1', 'role2')
   findAll() {
     return this.usersService.findAll();
   }
