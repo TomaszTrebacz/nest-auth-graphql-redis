@@ -1,13 +1,7 @@
-import {
-  Injectable,
-  ExecutionContext,
-  UnauthorizedException,
-  Inject,
-} from "@nestjs/common";
+import { Injectable, ExecutionContext, Inject } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import { GqlExecutionContext } from "@nestjs/graphql";
 import { Reflector } from "@nestjs/core";
-import { AuthenticationError } from "apollo-server-express";
 
 @Injectable()
 export class GqlAuthGuard extends AuthGuard("jwt") {

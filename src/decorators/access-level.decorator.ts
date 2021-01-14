@@ -1,7 +1,5 @@
 import { applyDecorators, UseGuards } from "@nestjs/common";
-import { AccessLevelGuard } from "../guards/access-level.guard";
-import { ConfirmedGuard } from "../guards/confirmed.guard";
-import { GqlAuthGuard } from "../guards/gql-auth.guard";
+import { AccessLevelGuard, ConfirmedGuard, GqlAuthGuard } from "../guards";
 
 export function AccessLevel() {
   return applyDecorators(

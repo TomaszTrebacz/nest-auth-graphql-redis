@@ -1,11 +1,5 @@
-import {
-  Injectable,
-  ExecutionContext,
-  UnauthorizedException,
-  Inject,
-} from "@nestjs/common";
+import { Injectable, ExecutionContext } from "@nestjs/common";
 import { GqlAuthGuard } from "./gql-auth.guard";
-import { Reflector } from "@nestjs/core";
 import { GqlExecutionContext } from "@nestjs/graphql";
 
 @Injectable()
