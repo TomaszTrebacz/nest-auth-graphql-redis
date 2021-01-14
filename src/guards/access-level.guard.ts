@@ -1,6 +1,7 @@
 import { Injectable, ExecutionContext } from "@nestjs/common";
 import { GqlAuthGuard } from "./gql-auth.guard";
 import { GqlExecutionContext } from "@nestjs/graphql";
+import { userRole } from "../enums";
 
 /*
   this guard is useful in scenarios when user want to change properties of other account by mutation,
@@ -17,7 +18,7 @@ export class AccessLevelGuard extends GqlAuthGuard {
       "role"
     );
 
-    if (reqUserRole == "user") {
+    if (reqUserRole == userRole.USER) {
       throw new Error("Wrong role!");
     }
 
@@ -29,8 +30,8 @@ export class AccessLevelGuard extends GqlAuthGuard {
     );
 
     if (
-      reqUserRole == "admin" &&
-      (resUserRole == "admin" || resUserRole == "root")
+      reqUserRole == userRole.ADMIN &&
+      (resUserRole == userRole.ADMIN || resUserRole == userRole.ROOT)
     ) {
       throw new Error(
         "You can not change any properties of accounts with admin or root permissions!"

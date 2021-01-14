@@ -1,11 +1,12 @@
 import { Injectable, ExecutionContext } from "@nestjs/common";
 import { GqlAuthGuard } from "./gql-auth.guard";
 import { GqlExecutionContext } from "@nestjs/graphql";
+import { userRole } from "../enums";
 
 @Injectable()
 export class RolesGuard extends GqlAuthGuard {
   async canActivate(context: ExecutionContext) {
-    const roles = this.reflector.get<string[]>("roles", context.getHandler());
+    const roles = this.reflector.get<userRole[]>("roles", context.getHandler());
 
     // if roles array is empty, we assume that only default user has access
     if (roles.length > 0) {
