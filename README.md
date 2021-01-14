@@ -122,14 +122,41 @@ export class xyzService {
   }
   ```
 
-  - Auth Decorator - All in one  
-    `this decorator combine all guards`
+  - Auth Decorator - the most readable approach to use this package  
+    `all of the above mentioned guards merged into one`
 
   ```ts
   @Query('users')
-  @Auth() // if you want check roles, use @Auth('role1', 'role2')
+  @Auth() // if you want to check also roles, use @Auth('role1', 'role2')
   findAll() {
     return this.usersService.findAll();
+  }
+  ```
+
+  - AuthAccess Decorator with auth-access guard  
+    `this decorator is useful in scenarios when user with permissions want to change properties of other similar account, e.g, user with admin role provide mutation to API wherein they want to change properties of root user or account with the same role`
+
+  ```ts
+  @Mutation()
+  @AccessLevel()
+  async changeRole(
+    @Args('changeRoleInput') changeRoleData: ChangeRoleDto,
+  ): Promise<boolean> {
+    await this.authService.changeRole(changeRoleData);
+
+    return true;
+  }
+  ```
+
+- ### Enum
+
+  - An important fact is that app is based on the enum describing user roles:
+
+  ```ts
+  export enum userRole {
+    ROOT = "root",
+    ADMIN = "admin",
+    USER = "user",
   }
   ```
 
@@ -217,7 +244,7 @@ export class xyzService {
 
 ## Real life scenario
 
-- Visit <a href="https://github.com/tomasztrebacz">my profile</a> to see how to seize the opportunities of this package by adding functionalities like reset password by email/phone, confirmation link, refresh token etc.
+- Visit <a href="https://github.com/tomasztrebacz">my profile</a> => <a href="https://github.com/TomaszTrebacz/fox.CMS">fox.CMS repository</a> and see how to seize the opportunities of this package by adding functionalities like reset password by email/phone, confirmation link, refresh token etc.
 
 ## Resources
 

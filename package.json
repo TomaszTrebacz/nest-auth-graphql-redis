@@ -1,7 +1,7 @@
 {
   "name": "@tomasztrebacz/nest-auth-graphql-redis",
-  "version": "1.4.0",
-  "description": "Nest auth package designed specifically for microservices based apps",
+  "version": "1.5.0",
+  "description": "NestJS package designed for handling auth using redis database",
   "author": "Tomasz Trebacz",
   "license": "MIT",
   "main": "dist/index.js",
