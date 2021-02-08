@@ -1,6 +1,6 @@
-import { Injectable, ExecutionContext } from "@nestjs/common";
-import { GqlAuthGuard } from "./gql-auth.guard";
-import { GqlExecutionContext } from "@nestjs/graphql";
+import { Injectable, ExecutionContext } from '@nestjs/common';
+import { GqlExecutionContext } from '@nestjs/graphql';
+import { GqlAuthGuard } from './gql-auth.guard';
 
 @Injectable()
 export class ConfirmedGuard extends GqlAuthGuard {
@@ -11,11 +11,11 @@ export class ConfirmedGuard extends GqlAuthGuard {
 
     const isConfirmed = await this.RedisHandlerService.getValue(
       userID,
-      "confirmed"
+      'confirmed',
     );
 
-    if (isConfirmed === "false") {
-      throw new Error("User is not confirmed. Please confirm accout");
+    if (isConfirmed === 'false') {
+      throw new Error('User is not confirmed. Please confirm accout');
     }
 
     return true;
