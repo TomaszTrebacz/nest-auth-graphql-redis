@@ -1,11 +1,20 @@
 <p align="center">
-  <a href="https://github.com/TomaszTrebacz/nest-auth-graphql-redis/packages/541967"><img src="https://i.postimg.cc/NG61WrJS/logo.png" alt="Package Logo" /></a>
-   <h1 align="center">Nest Auth GraphQL Redis</h1>
+  <a href="https://github.com/TomaszTrebacz/nest-auth-graphql-redis/packages/541967"><img src="https://i.postimg.cc/NG61WrJS/logo.png" alt="Package Logo" />
+  <a href="https://github.com/TomaszTrebacz/fox.CMS"><img src="https://i.ibb.co/b2bF8FP/fox.png" alt="App Logo" />
+  </a>
+   <h1 align="center">nest-auth-graphql-redis</h1>
+   <h2 align="center">created in purpose to use with <a href="https://github.com/TomaszTrebacz/fox.CMS">fox.CMS</a> app</h2>
 </p>
 
 ## Description
 
 `nest-auth-graphql-redis` is package which help you handling authentication & authorization using redis database, especially in apps with microservices based architecture.
+
+## To-do
+
+- [x] write tests,
+- [x] automate tests,
+- [x] automate publishing to NPM and GitHub Container Registry,
 
 ## Getting started
 
@@ -133,7 +142,7 @@ export class xyzService {
   }
   ```
 
-  - AuthAccess Decorator with auth-access guard  
+  - AccessLevel guard with decorator  
     `this decorator is useful in scenarios when user with permissions want to change properties of other similar account, e.g, user with admin role provide mutation to API wherein they want to change properties of root user or account with the same role`
 
   ```ts
@@ -249,6 +258,10 @@ export class xyzService {
 ## Resources
 
 - <a href="https://dev.to/nestjs/publishing-nestjs-packages-with-npm-21fm">Publishing NestJS Packages with npm | Author: John Biundo</a>
+
+### `Note!`
+
+The example featured in the above mentioned post is a bit outdated, but generally this article is a good point to start learning how to create own package.
 
 ## License
 
