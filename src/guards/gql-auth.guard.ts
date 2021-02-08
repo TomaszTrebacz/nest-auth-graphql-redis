@@ -1,13 +1,13 @@
-import { Injectable, ExecutionContext, Inject } from "@nestjs/common";
-import { AuthGuard } from "@nestjs/passport";
-import { GqlExecutionContext } from "@nestjs/graphql";
-import { Reflector } from "@nestjs/core";
+import { Injectable, ExecutionContext, Inject } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { GqlExecutionContext } from '@nestjs/graphql';
+import { Reflector } from '@nestjs/core';
 
 @Injectable()
-export class GqlAuthGuard extends AuthGuard("jwt") {
+export class GqlAuthGuard extends AuthGuard('jwt') {
   constructor(
-    @Inject("RedisHandlerService") public readonly RedisHandlerService,
-    public reflector: Reflector
+    @Inject('RedisHandlerService') public readonly RedisHandlerService,
+    public reflector: Reflector,
   ) {
     super();
   }
