@@ -1,4 +1,4 @@
-import { Injectable, UnprocessableEntityException } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { Redis } from "ioredis";
 import { RedisService } from "nestjs-redis";
 
@@ -32,8 +32,8 @@ export class RedisHandlerService {
   async getFields(id: string, keys: string[]): Promise<Record<string, string>> {
     const values: string[] = await this.client.hmget(id, keys);
 
-    if(values.includes(null)){
-      throw new Error('Can not fetch data - property does not exist.')
+    if (values.includes(null)) {
+      throw new Error("Can not fetch data - property does not exist.");
     }
 
     return Object.fromEntries(keys.map((_, i) => [keys[i], values[i]]));
@@ -42,14 +42,14 @@ export class RedisHandlerService {
   async userExists(id: string): Promise<boolean> {
     const res = await this.client.exists(id);
 
-    return res === 1 ? true : false;
+    return res === 1;
   }
 
   async getValue(id: string, key: string): Promise<string> {
     const value = await this.client.hget(id, key);
 
     if (!value) {
-      throw new UnprocessableEntityException("There is no user with given Id!");
+      throw new Error(`Can not fetch ${key} property from user with id: ${id}`);
     }
 
     return value;
@@ -59,18 +59,20 @@ export class RedisHandlerService {
     const isRemoved = await this.client.hdel(id, key);
 
     if (isRemoved !== 1) {
-      throw new UnprocessableEntityException("There is no user with given Id!");
+      throw new Error(
+        `Can not delete ${key} property from user with id: ${id}`
+      );
     }
 
     return true;
   }
 
-  async deleteUser(key: string): Promise<boolean> {
-    if (!key) {
-      throw new UnprocessableEntityException("Null id.");
-    }
+  async deleteUser(id: string): Promise<boolean> {
+    const isRemoved = await this.client.del(id);
 
-    await this.client.del(key);
+    if (isRemoved !== 1) {
+      throw new Error(`Can not delete user with id: ${id}`);
+    }
 
     return true;
   }
