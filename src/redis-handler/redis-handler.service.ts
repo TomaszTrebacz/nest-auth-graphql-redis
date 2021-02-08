@@ -20,20 +20,23 @@ export class RedisHandlerService {
     like reset password, refresh token etc.
   */
   async setUser(id: string, properties: Map<string, string>): Promise<boolean> {
-    try {
-      await this.client.hmset(id, properties);
+    const res: string = await this.client.hmset(id, properties);
 
-      return true;
-    } catch (err) {
-      throw new UnprocessableEntityException(err.message);
+    if (!res) {
+      throw new Error("Can not save data in redis database.");
     }
+
+    return true;
   }
 
-  async getFields(id: string, keys: string[]) {
-    const values = await this.client.hmget(id, keys);
+  async getFields(id: string, keys: string[]): Promise<Record<string, string>> {
+    const values: string[] = await this.client.hmget(id, keys);
 
-    const fields = Object.fromEntries(keys.map((_, i) => [keys[i], values[i]]));
-    return fields;
+    if(values.includes(null)){
+      throw new Error('Can not fetch data - property does not exist.')
+    }
+
+    return Object.fromEntries(keys.map((_, i) => [keys[i], values[i]]));
   }
 
   async userExists(id: string): Promise<boolean> {
