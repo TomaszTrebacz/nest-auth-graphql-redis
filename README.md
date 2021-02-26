@@ -6,7 +6,7 @@
 
 ## Description
 
-`nest-auth-graphql-redis` is **inseparable part of <a href="https://github.com/TomaszTrebacz/fox.CMS">fox.CMS</a> app.** This package handle _authentication & authorization_ using key-value database and add needful layer between app and _redis data store_. This repository has also the CI/CD pipeline which test & deploy code to NPM and private Github Package Registry.
+`nest-auth-graphql-redis` is **inseparable part of <a href="https://github.com/TomaszTrebacz/fox.CMS">fox.CMS</a> app.** This package handle _authentication & authorization_ using key-value database and add needful layer between app and _redis data store_. This repository has also _the CI/CD pipeline_ which test & deploy code to NPM and private Github Package Registry.
 
 ## Getting started
 
