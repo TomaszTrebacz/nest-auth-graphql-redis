@@ -1,20 +1,12 @@
 <p align="center">
-  <a href="https://github.com/TomaszTrebacz/nest-auth-graphql-redis/packages/541967"><img src="https://i.postimg.cc/NG61WrJS/logo.png" alt="Package Logo" />
-  <a href="https://github.com/TomaszTrebacz/fox.CMS"><img src="https://i.ibb.co/b2bF8FP/fox.png" alt="App Logo" />
+  <a href="https://github.com/TomaszTrebacz/nest-auth-graphql-redis/packages/541967"><img src="https://i.ibb.co/V3hgQm5/readme-library-HEADER.png" alt="Package Logo" />
   </a>
    <h1 align="center">nest-auth-graphql-redis</h1>
-   <h2 align="center">created in purpose to use with <a href="https://github.com/TomaszTrebacz/fox.CMS">fox.CMS</a> app</h2>
 </p>
 
 ## Description
 
-`nest-auth-graphql-redis` is package which help you handling authentication & authorization using redis database, especially in apps with microservices based architecture.
-
-## To-do
-
-- [x] write tests,
-- [x] automate tests,
-- [x] automate publishing to NPM and GitHub Container Registry,
+`nest-auth-graphql-redis` is **inseparable part of <a href="https://github.com/TomaszTrebacz/fox.CMS">fox.CMS</a> app.** This package handle _authentication & authorization_ using key-value database and add needful layer between app and _redis data store_. This repository has also the CI/CD pipeline which test & deploy code to NPM and private Github Package Registry.
 
 ## Getting started
 
