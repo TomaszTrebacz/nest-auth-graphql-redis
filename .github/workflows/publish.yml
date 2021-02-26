@@ -1,4 +1,4 @@
-name: Node.js Package
+name: Nest.js Package
 
 on:
   release:
